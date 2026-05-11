@@ -1,0 +1,32 @@
+{
+  "name": "meetdraw",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "pnpm run db:generate && pnpm run build:http && pnpm run build:ws && pnpm run build:web",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "start": "turbo start",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "db:generate": "cd packages/db && pnpm drizzle-kit generate && cd ../..",
+    "db:migrate": "cd packages/db && pnpm drizzle-kit migrate && cd ../..",
+    "start:http": "cd apps/http-server && node dist/index.js",
+    "start:ws": "cd apps/ws-server && node dist/index.js",
+    "start:web": "cd apps/web && pnpm start",
+    "build:http": "cd apps/http-server && tsc -b",
+    "build:ws": "cd apps/ws-server && tsc -b",
+    "build:web": "cd apps/web && pnpm build",
+    "typecheck": "turbo typecheck"
+  },
+  "devDependencies": {
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "prettier": "^3.5.1",
+    "turbo": "^2.4.2",
+    "typescript": "5.7.3"
+  },
+  "packageManager": "pnpm@10.4.1",
+  "engines": {
+    "node": ">=20"
+  }
+}
