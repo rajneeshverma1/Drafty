@@ -1,0 +1,30 @@
+{
+  "name": "ws-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "build": "tsc -b",
+    "start": "node ./dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/ws": "^8.18.1",
+    "@workspace/common": "workspace:*",
+    "@workspace/db": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.45.1",
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "ws": "^8.18.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9"
+  }
+}
