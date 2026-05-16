@@ -456,3 +456,4 @@ export default function DocsPage() {
     </div>
   );
 }
+// docs: add technical details to documentation page
