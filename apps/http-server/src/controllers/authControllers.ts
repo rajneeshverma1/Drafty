@@ -165,3 +165,4 @@ export async function infoController(req: Request, res: Response) {
 }
 // perf: optimize framer motion animations on hero section
 // style: update button hover states for consistency
+// refactor: optimize svg paths in hero section
