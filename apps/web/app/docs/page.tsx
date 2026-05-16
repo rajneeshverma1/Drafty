@@ -457,3 +457,4 @@ export default function DocsPage() {
   );
 }
 // docs: add technical details to documentation page
+// refactor: modularize background blobs component
