@@ -382,3 +382,4 @@ wss.on("connection", async (socket: WebSocket, req: Request) => {
 });
 // chore: update component comments for clarity
 // chore: improve error handling in websocket server
+// chore: update environment variable descriptions
