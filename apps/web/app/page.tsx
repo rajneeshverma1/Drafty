@@ -397,3 +397,4 @@ export default function Page() {
     </div>
   );
 }
+// refactor: improve landing page responsiveness
