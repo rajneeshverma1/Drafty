@@ -458,3 +458,4 @@ export default function DocsPage() {
 }
 // docs: add technical details to documentation page
 // refactor: modularize background blobs component
+// style: enhance dark mode contrast on landing page
