@@ -163,3 +163,4 @@ export async function infoController(req: Request, res: Response) {
     });
   }
 }
+// perf: optimize framer motion animations on hero section
