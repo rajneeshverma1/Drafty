@@ -7,6 +7,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "start": "turbo start",
+    "starts": "pnpm run start:ws",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "db:generate": "cd packages/db && pnpm drizzle-kit generate && cd ../..",
     "db:migrate": "cd packages/db && pnpm drizzle-kit migrate && cd ../..",
