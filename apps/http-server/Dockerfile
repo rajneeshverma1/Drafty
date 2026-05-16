@@ -13,7 +13,7 @@ COPY packages/eslint-config/ ./packages/eslint-config/
 RUN pnpm install --frozen-lockfile
 
 COPY apps/http-server ./apps/http-server
-COPY packages/db ./packages/db
+COPY packages/db ./packages/db  
 COPY packages/common ./packages/common
 
 RUN pnpm --filter @workspace/common build && \

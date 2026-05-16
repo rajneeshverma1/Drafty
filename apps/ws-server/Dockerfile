@@ -37,6 +37,6 @@ COPY --from=builder /app/packages/db ./packages/db
 COPY --from=builder /app/packages/common ./packages/common
 
 ENV NODE_ENV=production
-EXPOSE 4002
+EXPOSE 8080
 
 CMD ["node", "apps/ws-server/dist/index.js"]
