@@ -21,3 +21,4 @@ const AppointmentCard = () => {
 
 export default AppointmentCard;
 // style: adjust footer spacing for better alignment
+// style: enhance glassmorphism effects in comms card
