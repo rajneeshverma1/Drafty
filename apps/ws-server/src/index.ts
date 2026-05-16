@@ -380,3 +380,4 @@ wss.on("connection", async (socket: WebSocket, req: Request) => {
     return;
   }
 });
+// chore: update component comments for clarity
