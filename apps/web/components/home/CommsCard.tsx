@@ -11,7 +11,7 @@ const AppointmentCard = () => {
       </p>
       <LinkButton
         variant="ghost"
-        href="https://github.com/HarshitBreaksProd/meetdraw"
+        href="https://github.com/rajneeshverma1/Drafty"
       >
         Star
       </LinkButton>

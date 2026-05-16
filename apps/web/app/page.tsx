@@ -368,11 +368,9 @@ export default function Page() {
 
           <div className="flex justify-center items-center gap-8 mb-12">
             {[
-              { icon: <BsTwitterX />, link: "https://x.com/I_Break_Prod" },
-              { icon: <FiLinkedin />, link: "https://www.linkedin.com/in/ibreakprod" },
-              { icon: <Globe />, link: "https://hrsht.me" },
-              { icon: <FiGithub />, link: "https://github.com/ibreakprod" },
-              { icon: <FaCode />, link: "https://github.com/rajneeshverma1/Drafty" },
+              { icon: <BsTwitterX />, link: "https://x.com/Rajneeshvermaa" },
+              { icon: <FiLinkedin />, link: "https://www.linkedin.com/in/rajneesh-verma-4a871825b/" },
+              { icon: <FiGithub />, link: "https://github.com/rajneeshverma1" },
             ].map((social, i) => (
               <motion.a
                 key={i}
