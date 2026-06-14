@@ -368,7 +368,7 @@ export declare const drawsTable: import("drizzle-orm/pg-core").PgTableWithColumn
             name: "lineWidth";
             tableName: "draw";
             dataType: "number";
-            columnType: "PgInteger";
+            columnType: "PgReal";
             data: number;
             driverParam: string | number;
             notNull: true;
@@ -419,7 +419,7 @@ export declare const drawsTable: import("drizzle-orm/pg-core").PgTableWithColumn
             name: "startX";
             tableName: "draw";
             dataType: "number";
-            columnType: "PgInteger";
+            columnType: "PgReal";
             data: number;
             driverParam: string | number;
             notNull: false;
@@ -436,7 +436,7 @@ export declare const drawsTable: import("drizzle-orm/pg-core").PgTableWithColumn
             name: "startY";
             tableName: "draw";
             dataType: "number";
-            columnType: "PgInteger";
+            columnType: "PgReal";
             data: number;
             driverParam: string | number;
             notNull: false;
@@ -453,7 +453,7 @@ export declare const drawsTable: import("drizzle-orm/pg-core").PgTableWithColumn
             name: "endX";
             tableName: "draw";
             dataType: "number";
-            columnType: "PgInteger";
+            columnType: "PgReal";
             data: number;
             driverParam: string | number;
             notNull: false;
@@ -470,7 +470,7 @@ export declare const drawsTable: import("drizzle-orm/pg-core").PgTableWithColumn
             name: "endY";
             tableName: "draw";
             dataType: "number";
-            columnType: "PgInteger";
+            columnType: "PgReal";
             data: number;
             driverParam: string | number;
             notNull: false;
