@@ -85,3 +85,26 @@ Drafty is a high-performance, real-time collaborative whiteboarding application 
    ```bash
    pnpm build
    ```
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**"Database does not exist" error:**
+- Ensure PostgreSQL is running: `pg_isready`
+- Verify database exists: `psql -l | grep excalidraw`
+- Check `DATABASE_URL` is set in all `.env` files
+
+**Port conflicts (EADDRINUSE):**
+- Change ports in env files if 3000, 3001, or 8080 are already in use
+- Update corresponding `NEXT_PUBLIC_HTTP_URL` and `NEXT_PUBLIC_WS_URL`
+
+**Auth/signup fails with 500 error:**
+- Confirm `DATABASE_URL` is present in `apps/http-server/.env`
+- Restart the http-server after adding env variables
+- Check server logs for detailed error messages
+
+**WebSocket connection fails:**
+- Verify `JWT_SECRET` matches in both http-server and ws-server
+- Check ws-server is running on port 8080
+- Ensure `NEXT_PUBLIC_WS_URL` points to correct WebSocket URL
