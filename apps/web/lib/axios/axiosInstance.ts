@@ -1,12 +1,6 @@
 import axios from "axios";
-import { cookies } from "next/headers";
 
-let url = process.env.NEXT_PUBLIC_HTTP_URL;
-console.log(url);
-
-if (url && !url.endsWith("/api/v1")) {
-  url = url + "/api/v1";
-}
+const url = process.env.NEXT_PUBLIC_HTTP_URL || "http://localhost:3001/api/v1";
 
 const axiosInstance = axios.create({
   baseURL: url,
@@ -18,6 +12,8 @@ axiosInstance.interceptors.request.use(
     let token: string | undefined;
 
     if (typeof window === "undefined") {
+      // Server-side: dynamically import cookies to avoid module-level async call
+      const { cookies } = await import("next/headers");
       const cookieStore = await cookies();
       token = cookieStore.get("jwt")?.value;
     } else {
