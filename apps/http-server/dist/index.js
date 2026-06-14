@@ -19,6 +19,9 @@ app.use((0, cors_1.default)({
     origin: process.env.FRONTEND_ORIGIN,
     credentials: true,
 }));
+app.get("/api/v1/health", (req, res) => {
+    res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
+});
 app.use("/api/v1/auth", authRouter_1.default);
 app.use("/api/v1/room", roomRouter_1.default);
 app.use("/api/v1/content", contentRouter_1.default);

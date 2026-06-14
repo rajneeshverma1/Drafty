@@ -18,6 +18,10 @@ app.use(
   })
 );
 
+app.get("/api/v1/health", (req, res) => {
+  res.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/room", roomRouter);
 app.use("/api/v1/content", contentRouter);

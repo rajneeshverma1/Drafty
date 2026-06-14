@@ -1,0 +1,10 @@
+{
+  "buildCommand": "pnpm turbo build --filter=web",
+  "framework": "nextjs",
+  "installCommand": "pnpm install",
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  }
+}

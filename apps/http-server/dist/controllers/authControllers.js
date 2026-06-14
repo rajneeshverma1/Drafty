@@ -164,3 +164,6 @@ function infoController(req, res) {
         }
     });
 }
+// perf: optimize framer motion animations on hero section
+// style: update button hover states for consistency
+// refactor: optimize svg paths in hero section
