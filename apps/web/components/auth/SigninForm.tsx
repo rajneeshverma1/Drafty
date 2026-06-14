@@ -23,7 +23,7 @@ interface RequestCookie {
   value: string;
 }
 import { setUser } from "@/lib/features/meetdraw/appSlice";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks/redux";
+import { useAppDispatch } from "@/lib/hooks/redux";
 import { toast } from "@workspace/ui/components/sonner";
 
 function SubmitButton() {
@@ -49,7 +49,6 @@ export default function SigninForm({
 }) {
   const initialState = { message: "", errors: {} };
   const [state, formAction] = useActionState(signinAction, initialState);
-  const userState = useAppSelector((state) => state.app.user);
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -57,9 +56,11 @@ export default function SigninForm({
     const sessionUser = sessionStorage.getItem("user");
 
     if (sessionUser && jwtCookie && jwtCookie.value) {
+      // Already logged in on page load — restore state and redirect
       dispatch(setUser(JSON.parse(sessionUser)));
       router.replace("/home");
     } else if (state.user) {
+      // Fresh login succeeded — save user and redirect immediately
       const user = {
         id: state.user.id,
         name: state.user.name,
@@ -67,17 +68,12 @@ export default function SigninForm({
       };
       sessionStorage.setItem("user", JSON.stringify(user));
       dispatch(setUser(user));
+      router.replace("/home");
     }
   }, [state.user]);
 
   useEffect(() => {
-    if (jwtCookie && jwtCookie.value && userState !== null) {
-      router.replace("/home");
-    }
-  }, [userState]);
-
-  useEffect(() => {
-    if (state.message) {
+    if (state.message && !state.user) {
       toast.error(state.message);
     }
   }, [state.message]);
@@ -118,7 +114,7 @@ export default function SigninForm({
                 className="focus-visible:border-green-600/50 focus-visible:ring-green-600/20"
               />
             </div>
-            {state.message && (
+            {state.message && !state.user && (
               <p className="text-sm -my-1 -mb-3 text-red-500 flex gap-2 font-light items-center">
                 <BiInfoCircle />
                 {state.message}
