@@ -13,7 +13,7 @@ COPY packages/eslint-config/ ./packages/eslint-config/
 RUN pnpm install --frozen-lockfile
 
 COPY apps/http-server ./apps/http-server
-COPY packages/db ./packages/db  
+COPY packages/db ./packages/db
 COPY packages/common ./packages/common
 
 RUN pnpm --filter @workspace/common build && \
@@ -33,10 +33,13 @@ COPY packages/common/package.json ./packages/common/
 RUN pnpm install --frozen-lockfile --prod
 
 COPY --from=builder /app/apps/http-server/dist ./apps/http-server/dist
-COPY --from=builder /app/packages/db ./packages/db
-COPY --from=builder /app/packages/common ./packages/common
+COPY --from=builder /app/packages/db/dist ./packages/db/dist
+COPY --from=builder /app/packages/db/package.json ./packages/db/
+COPY --from=builder /app/packages/common/dist ./packages/common/dist
+COPY --from=builder /app/packages/common/package.json ./packages/common/
 
 ENV NODE_ENV=production
-EXPOSE 4001
+
+EXPOSE ${PORT:-3001}
 
 CMD ["node", "apps/http-server/dist/index.js"]

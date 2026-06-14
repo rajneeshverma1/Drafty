@@ -33,10 +33,13 @@ COPY packages/common/package.json ./packages/common/
 RUN pnpm install --frozen-lockfile --prod
 
 COPY --from=builder /app/apps/ws-server/dist ./apps/ws-server/dist
-COPY --from=builder /app/packages/db ./packages/db
-COPY --from=builder /app/packages/common ./packages/common
+COPY --from=builder /app/packages/db/dist ./packages/db/dist
+COPY --from=builder /app/packages/db/package.json ./packages/db/
+COPY --from=builder /app/packages/common/dist ./packages/common/dist
+COPY --from=builder /app/packages/common/package.json ./packages/common/
 
 ENV NODE_ENV=production
-EXPOSE 8080
+
+EXPOSE ${PORT:-8080}
 
 CMD ["node", "apps/ws-server/dist/index.js"]
