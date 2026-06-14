@@ -10,13 +10,18 @@ export * from "./schema.js";
 
 let db: ReturnType<typeof drizzleNeon> | ReturnType<typeof drizzlePg>;
 
-const env = process.env.NODE_ENV;
+const useNeon = process.env.USE_NEON === "true";
 
-if (env && env === "production") {
+if (useNeon) {
+  // Neon serverless driver (for Neon/Vercel deployments)
   const sql = new PoolNeon({ connectionString: process.env.DATABASE_URL! });
   db = drizzleNeon(sql, { schema });
 } else {
-  const pool = new PoolPg({ connectionString: process.env.DATABASE_URL! });
+  // Standard PostgreSQL driver (for local dev, Render, Railway, etc.)
+  const pool = new PoolPg({
+    connectionString: process.env.DATABASE_URL!,
+    ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+  });
   db = drizzlePg(pool, { schema });
 }
 

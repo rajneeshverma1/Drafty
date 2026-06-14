@@ -3,7 +3,7 @@ FROM node:22-alpine AS builder
 RUN corepack enable && corepack prepare pnpm@10.4.1 --activate
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 COPY apps/ws-server/package.json ./apps/ws-server/
 COPY packages/db/package.json ./packages/db/
 COPY packages/common/package.json ./packages/common/
@@ -25,10 +25,12 @@ FROM node:22-alpine
 RUN corepack enable && corepack prepare pnpm@10.4.1 --activate
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 COPY apps/ws-server/package.json ./apps/ws-server/
 COPY packages/db/package.json ./packages/db/
 COPY packages/common/package.json ./packages/common/
+COPY packages/typescript-config/ ./packages/typescript-config/
+COPY packages/eslint-config/ ./packages/eslint-config/
 
 RUN pnpm install --frozen-lockfile --prod
 
