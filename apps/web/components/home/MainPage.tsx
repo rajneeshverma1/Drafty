@@ -32,7 +32,7 @@ const MainPage = ({
 }: {
   jwtCookie: RequestCookie;
   rooms: Room[];
-  userInfo: User;
+  userInfo: User | null;
 }) => {
   const userState = useAppSelector((state) => state.app.user);
   const dispatch = useAppDispatch();
