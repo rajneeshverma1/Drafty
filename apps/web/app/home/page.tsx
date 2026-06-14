@@ -32,7 +32,7 @@ const page = async () => {
 
 
   return (
-    <MainPage jwtCookie={jwtCookie} rooms={rooms.rooms} userInfo={user.user} />
+    <MainPage jwtCookie={jwtCookie} rooms={rooms?.rooms ?? []} userInfo={user?.user ?? null} />
   );
 };
 
